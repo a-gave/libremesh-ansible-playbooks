@@ -1,0 +1,21 @@
+---
+
+# option main_ipv4_address '10.%N1.0.0/16'
+# option ap_ssid 'LibreMesh.org'
+# Network options
+default_channel_5ghz: 48
+ip_network: "10.13"
+ip_netmask: "/16"
+
+
+libremesh_packages:
+  - profile-libremesh-default
+  - profile-libremesh-suggested-packages
+
+libremesh_devices:
+- openwrt_target: ath79
+  openwrt_subtarget: generic
+- openwrt_target: ramips
+  openwrt_subtarget: mt76x8
+- openwrt_target: x86
+  openwrt_subtarget: 64  

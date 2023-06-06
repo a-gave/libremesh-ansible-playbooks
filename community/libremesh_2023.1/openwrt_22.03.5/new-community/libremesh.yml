@@ -1,0 +1,12 @@
+---
+libremesh_packages:
+  - profile-libremesh-default
+  - profile-libremesh-suggested-packages
+
+libremesh_devices:
+- openwrt_target: ath79
+  openwrt_subtarget: generic
+- openwrt_target: ramips
+  openwrt_subtarget: mt76x8
+- openwrt_target: x86
+  openwrt_subtarget: 64  
