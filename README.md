@@ -1,8 +1,30 @@
 
-# libremesh_playbooks
+# LibreMesh Ansible playbooks
 
-Here are defined some playbook templates to do common network administration tasks 
+This project defines some ansible playbook templates to use [Libremesh Ansible collection](https://gitlab.com/a-gave/libremesh-ansible-collection.git)
+
+They are intended to do common network administration tasks 
 useful for a tech team of a community-network based on LibreMesh.
+
+Requirements
+------------
+
+Install Ansible requirements:
+
+    pip3 install ansible
+    pip3 install jinja2-ansible-filters
+
+To use the ansible commands `ansible-playbook`, `ansible-galaxy`
+Add the `~/.local/bin` path to your .bashrc or .bash_profile
+
+    echo "export PATH=$PATH:$HOME/.local/bin" >> ~/.bashrc
+    source ~/.bashrc
+
+Dependencies
+------------
+Install roles and collections on which this collection depends
+
+    ansible-galaxy install -r requirements.yml
 
 
 ## Get started
@@ -31,7 +53,7 @@ useful for a tech team of a community-network based on LibreMesh.
 ---
 
 0. Initialize community variables
-The variables file by default should be included in a path defined by the version of libremesh and the version of openwrt that should be used, this ease and rend explicit the matching of configurations that should be applied, and is suitable e.g. for a small tech team that needs to build for different devices with configurations that may vary depending on LibreMesh or OpenWrt repositories
+The variables file by default should be included in a path defined by the version of libremesh and the version of openwrt that should be used, this eases and rends explicit the matching of configurations that should be applied, and is suitable e.g. for a small tech team that needs to build firmware images for different devices with configurations that may vary depending on LibreMesh or OpenWrt development.
 
 The example playbooks 
 
@@ -51,8 +73,13 @@ cp -r libremesh_2023.1/openwrt_22.03.5 libremesh_master/openwrt_22.03
 cp -r libremesh_2023.1/openwrt_22.03.5/new-community/main.defaults.yml  libremesh_2023.1/openwrt_22.03.5/new-community/main.yml
 ```
 
+...
 
-### 0.3 Define in the main file the system user and main openwrt_dir
+2. Build LibreMesh
+
+    ansible-playbook build_libremesh.yml
+
+
 
 
 

@@ -1,0 +1,20 @@
+# requirements file for libremesh ansible playbooks
+
+collections:
+  - name: https://gitlab.com/a-gave/libremesh-ansible-collection.git
+    type: git
+  - name: https://github.com/ansible-collections/community.general.git
+    type: git
+  - name: https://github.com/ansible-collections/community.crypto.git
+    type: git
+  - name: https://github.com/prometheus-community/ansible.git
+    type: git
+
+roles:
+  - name: libremesh.openwrt_buildroot
+    src: https://gitlab.com/a-gave/ansible_openwrt_buildroot.git
+    type: git
+  - name: cloudalchemy.grafana    
+    src: https://github.com/cloudalchemy/ansible-grafana.git
+    type: git
+

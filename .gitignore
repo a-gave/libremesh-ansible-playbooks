@@ -1,8 +1,10 @@
 # Project
 *
 !README.md
+!LICENSE
 !ansible.cfg
 !galaxy.yml
+!requirements.yml
 ## Community vars
 !community/*/*/libremesh/main.yml
 !community/*/*/libremesh/stable.yml
