@@ -1,6 +1,7 @@
 ---
 - name: Monitor nodes
   hosts: belvedere
+  gather_facts: yes
   become: yes
   roles:
     - 'libremesh.libremesh.monitoring.prometheus'

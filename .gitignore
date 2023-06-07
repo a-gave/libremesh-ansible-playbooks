@@ -1,43 +1,16 @@
 # Project
-
-## Community variables
-community/*/*/*/*
+*
+!README.md
+!ansible.cfg
+!galaxy.yml
+## Community vars
 !community/*/*/libremesh/main.yml
 !community/*/*/libremesh/stable.yml
-
 !community/*/*/new-community/main.yml
 !community/*/*/new-community/libremesh.yml
 !community/*/*/new-community/*.defaults.yml
-
 ## Local packages
-files/packages/*/
-
-### Exclude this for example
 !files/packages/lime-wireguard/
-
-## Default OpenWrt dir
-openwrt_build/
-
-## Inventory
-hosts
-lime-mac/*
-
-## Variables
-vars/
-group_vars/
-
-host_vars/*
 !/host_vars/lime-000000000000.yml
 !/host_vars/localhost.yml
 
-## Logs and data 
-tmp/
-
-## Secrets
-.vault
-
-
-# Common
-.old
-.OLD
-~*
