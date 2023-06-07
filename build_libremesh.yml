@@ -3,7 +3,7 @@
   hosts: localhost
   gather_facts: no
   vars:
-    libremesh_version: 2023.1
+    libremesh_version: master
     openwrt_version: 22.03.5
     libremesh_community: libremesh
     libremesh_community_variables_file: stable

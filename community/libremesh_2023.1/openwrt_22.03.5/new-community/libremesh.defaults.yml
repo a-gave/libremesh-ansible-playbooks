@@ -8,6 +8,15 @@ ip_network: "10.13"
 ip_netmask: "/16"
 
 
+# Overwrite force x86_64 if you need to compile for selected architectures
+# force_openwrt_sdk_build_only_x86_64: true
+
+# List of packages that will be used by OpenWrt ImageBuilder
+# and that need to be compiled with OpenWrt Sdk 
+# By default they are added from `{{ playbook_dir }}/files/packages`
+# libremesh_local_packages:
+  # - custom_package
+
 libremesh_packages:
   - profile-libremesh-default
   - profile-libremesh-suggested-packages
@@ -15,7 +24,20 @@ libremesh_packages:
 libremesh_devices:
 - openwrt_target: ath79
   openwrt_subtarget: generic
+  packages: 
+    - luci
+  openwrt_devices:
+    - name: ubnt_nanostation-m-xw
+      lime_mac:
+        - lime_mac: lime-b4fbe4598263
+          hostname: mantide
+    - name: ubnt_nanostation-loco-m-xw
+      lime_mac:
+        - lime_mac: lime-802aa8b71afc
+          hostname: formica
 - openwrt_target: ramips
   openwrt_subtarget: mt76x8
+  openwrt_devices:
+    - name: tplink_tl-mr6400-v4
 - openwrt_target: x86
   openwrt_subtarget: 64  
