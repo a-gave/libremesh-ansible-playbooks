@@ -69,15 +69,16 @@ Adjust the inventory file defining:
   - ip_address: here is `12.34.56.78`
   - user for ssh connection: here is `builder` 
 
-    # hosts.example
-    buildhost:
-      ansible_host: 12.34.56.78
-      ansible_user: builder
-      ansible_become_pass: "{{ builder_become_pass }}"
-      ansible_become_user: root
-      ansible_become_method: su
-      ansible_become_flags:
-
+```
+# hosts.example
+buildhost:
+  ansible_host: 12.34.56.78
+  ansible_user: builder
+  ansible_become_pass: "{{ builder_become_pass }}"
+  ansible_become_user: root
+  ansible_become_method: su
+  ansible_become_flags:
+```
 
 2. Setup a system to retrieve passwords
 
@@ -119,22 +120,22 @@ Copy the default ansible configuration file
     cp ansible.cfg.example ansible.cfg
 
 Adjust ansible local configuration file uncommenting `vault_password_file` if you intend to use ansible-vault
+```
+# ansible.cfg.example
+[passwordstore_lookup]
+lock = readwrite
+locktimeout = 45000s
 
-    # ansible.cfg.example
-    [passwordstore_lookup]
-    lock = readwrite
-    locktimeout = 45000s
+[defaults]
+inventory = ./hosts
+#callbacks_enabled = profile_tasks
+interpreter_python = /usr/bin/python3
+remote_user = root
+# vault_password_file = ./.vault
 
-    [defaults]
-    inventory = ./hosts
-    #callbacks_enabled = profile_tasks
-    interpreter_python = /usr/bin/python3
-    remote_user = root
-    # vault_password_file = ./.vault
-
-    [ssh_connection]
-    scp_if_ssh = True
-
+[ssh_connection]
+scp_if_ssh = True
+```
 ...
 
 3. Build LibreMesh
