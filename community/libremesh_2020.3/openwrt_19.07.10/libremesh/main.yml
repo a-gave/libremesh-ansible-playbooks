@@ -1,0 +1,7 @@
+# Community specific variables
+
+openwrt_build_mode: "stable"
+openwrt_build_user: "{{ansible_user}}"
+openwrt_dir: /mnt/openwrt_build/libremesh/{{ openwrt_build_mode }}
+openwrt_bin_dir: "{{ openwrt_buildroot_dir }}/images/{{ libremesh_community }}/{{ libremesh_community_variables_file }}/targets/{{openwrt_target}}_{{openwrt_subtarget}}"
+

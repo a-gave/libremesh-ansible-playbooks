@@ -1,0 +1,12 @@
+---
+- name: Build LibreMesh {{ libremesh_version }} supported devices
+  hosts: localhost
+  gather_facts: no
+  vars:
+    libremesh_version: master
+    openwrt_version: 22.03.5
+    libremesh_community: libremesh
+    libremesh_community_vars_file: stable
+    build_libremesh_supported_devices: true  
+  roles: 
+    - libremesh.libremesh.openwrt_imagebuilder_docker       

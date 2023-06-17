@@ -1,0 +1,30 @@
+# List of devices to build with specified packages
+
+libremesh_devices_packages:
+  - profile-libremesh-default
+  - profile-libremesh-suggested-packages
+
+libremesh_devices:
+- openwrt_target: ath79
+  openwrt_subtarget: generic
+
+- openwrt_target: bcm63xx
+  openwrt_subtarget: generic
+
+- openwrt_target: bcm63xx
+  openwrt_subtarget: smp
+
+- openwrt_target: ipq40xx
+  openwrt_subtarget: generic
+
+- openwrt_target: ramips
+  openwrt_subtarget: mt76x8
+
+- openwrt_target: ramips
+  openwrt_subtarget: mt7620
+
+- openwrt_target: ramips
+  openwrt_subtarget: mt7621
+
+- openwrt_target: x86
+  openwrt_subtarget: 64  

@@ -1,0 +1,7 @@
+!#/bin/sh
+
+touch /etc/config/wireguard
+
+[ -x /etc/init.d/wireguard ] &&
+	/etc/init.d/wireguard enable
+exit 0
