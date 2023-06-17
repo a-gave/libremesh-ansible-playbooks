@@ -57,25 +57,87 @@ The variables file by default should be included in a path defined by the versio
 
 The example playbooks 
 
-### 0.1 Create a directory inside the libremesh_version/openwrt_version with the name of your community
-```
-mkdir libremesh_2023.1/openwrt_22.03.5/new_community.yml
-```
-
-If you prefer to base openwrt and/or libremesh on `branchs` instead of `tags` copy the corresponding tags folder
-```
-cp -r libremesh_2023.1/openwrt_22.03.5 libremesh_master/openwrt_22.03
-```
 
 
-### 0.2 Copy the template of a community variables folder
-```
-cp -r libremesh_2023.1/openwrt_22.03.5/new-community/main.defaults.yml  libremesh_2023.1/openwrt_22.03.5/new-community/main.yml
-```
+1. Create an inventory file
+https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html
+
+    cp hosts.example hosts
+
+Adjust the inventory file defining:
+  - hostname: here is `buildhost`
+  - ip_address: here is `12.34.56.78`
+  - user for ssh connection: here is `builder` 
+
+    # hosts.example
+    buildhost:
+      ansible_host: 12.34.56.78
+      ansible_user: builder
+      ansible_become_pass: "{{ builder_become_pass }}"
+      ansible_become_user: root
+      ansible_become_method: su
+      ansible_become_flags:
+
+
+2. Setup a system to retrieve passwords
+
+## 2.1 using ansible-vault
+https://docs.ansible.com/ansible/latest/cli/ansible-vault.html
+
+Create a vault password
+
+    echo 'CHANGEME' > .vault  
+
+Create a vault protected file,
+For simplicity create the variable in `group_vars/all.yml` to be sure to include it whatever host will run the playbook
+
+    ansible-vault create group_vars/all.yml --vault-password-file=".vault"
+    
+Add `buildhost` root password
+
+    builder_become_pass: ROOT_PASSWORD
+
+## 2.2 using community.general.passwordstore lookup
+https://docs.ansible.com/ansible/latest/collections/community/general/passwordstore_lookup.html
+
+For simplicity create the variable in `group_vars/all.yml` to be sure to include it whatever host will run the playbook
+
+    mkdir group_vars/
+
+Add the path to find the key in your passwordstore, in this example is `buildhost/user/root`
+
+    cat << EOF >> group_vars/all.yml
+    
+    builder_become_pass: "{{ lookup('passwordstore', 'buildhost/user/root', errors='strict') | default(omit) }}"
+    EOF
+
+## 2.3 Setup ansible configuration file
+https://docs.ansible.com/ansible/latest/reference_appendices/config.html
+
+Copy the default ansible configuration file
+
+    cp ansible.cfg.example ansible.cfg
+
+Adjust ansible local configuration file uncommenting `vault_password_file` if you intend to use ansible-vault
+
+    # ansible.cfg.example
+    [passwordstore_lookup]
+    lock = readwrite
+    locktimeout = 45000s
+
+    [defaults]
+    inventory = ./hosts
+    #callbacks_enabled = profile_tasks
+    interpreter_python = /usr/bin/python3
+    remote_user = root
+    # vault_password_file = ./.vault
+
+    [ssh_connection]
+    scp_if_ssh = True
 
 ...
 
-2. Build LibreMesh
+3. Build LibreMesh
 
     ansible-playbook build_libremesh.yml
 

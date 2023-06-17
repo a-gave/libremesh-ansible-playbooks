@@ -2,7 +2,8 @@
 *
 !README.md
 !LICENSE
-!ansible.cfg
+!ansible.cfg.example
+!hosts.example
 !galaxy.yml
 !requirements.yml
 ## Community vars

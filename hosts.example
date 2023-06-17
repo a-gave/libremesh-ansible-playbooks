@@ -1,0 +1,9 @@
+
+
+buildhost:
+  ansible_host: 12.34.56.78 # ip address
+  ansible_user: builder
+  ansible_become_pass: "{{ builder_become_pass }}"
+  ansible_become_user: root
+  ansible_become_method: su
+  ansible_become_flags:
