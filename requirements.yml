@@ -12,7 +12,7 @@ collections:
 
 roles:
   - name: libremesh.openwrt_buildroot
-    src: https://gitlab.com/a-gave/ansible_openwrt_buildroot.git
+    src: git+https://gitlab.com/a-gave/ansible_openwrt_buildroot.git
     type: git
   - name: cloudalchemy.grafana    
     src: https://github.com/cloudalchemy/ansible-grafana.git
