@@ -30,38 +30,10 @@ Install roles and collections on which this collection depends
     ansible-galaxy install -r requirements.yml
 
 
-## Get started
+Get started
+------------
 
-0. Initialize community variables 
-  - Create community variables files with
-    - list of target_subtarget/devices of which build a firmware image 
-    - packages that are common to multiple devices, and to multiple target_subtarget 
-    - packages that depends on target_subtarget or device
-    - configuration files (lime-macaddress) and/or packages for specific devices
-    - environment variables about where to execute the build, where binaries should be produced
-
-1. Generate device specific configurations file
-
-2. Build Libremesh
-
-3. Monitoring
-  - Setup a monitoring system on a server
-    - prometheus
-    - alertmanager
-    - blackbox_exporter
-    - grafana
-  - Setup a monitoring system with a vpn
-  - Add LibreMesh devices to a monitoring system
-
----
-
-0. Initialize community variables
-The variables file by default should be included in a path defined by the version of libremesh and the version of openwrt that should be used, this eases and rends explicit the matching of configurations that should be applied, and is suitable e.g. for a small tech team that needs to build firmware images for different devices with configurations that may vary depending on LibreMesh or OpenWrt development.
-
-The example playbooks 
-
-
-1. Create an inventory file
+### 1. Create an inventory file
 https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html
 
     cp hosts.example hosts
@@ -82,9 +54,10 @@ buildhost:
   ansible_become_flags:
 ```
 
-2. Setup a system to retrieve passwords
+### 2. Setup a system to retrieve passwords
+------------
 
-## 2.1 using ansible-vault
+#### 2.1 using ansible-vault
 https://docs.ansible.com/ansible/latest/cli/ansible-vault.html
 
 Create a vault password
@@ -100,7 +73,7 @@ Add `buildhost` root password
 
     builder_become_pass: ROOT_PASSWORD
 
-## 2.2 using community.general.passwordstore lookup
+#### 2.2 using community.general.passwordstore lookup
 https://docs.ansible.com/ansible/latest/collections/community/general/passwordstore_lookup.html
 
 For simplicity create the variable in `group_vars/all.yml` to be sure to include it whatever host will run the playbook
@@ -114,7 +87,7 @@ Add the path to find the key in your passwordstore, in this example is `buildhos
     builder_become_pass: "{{ lookup('passwordstore', 'buildhost/user/root', errors='strict') | default(omit) }}"
     EOF
 
-## 2.3 Setup ansible configuration file
+#### 2.3 Setup ansible configuration file
 https://docs.ansible.com/ansible/latest/reference_appendices/config.html
 
 Copy the default ansible configuration file
@@ -139,8 +112,38 @@ remote_user = root
 scp_if_ssh = True
 ```
 
-3. Build LibreMesh
+### 3. Build LibreMesh
 
     ansible-playbook build_libremesh.yml
 
 Read also [README_ROLES.md](./README_ROLES.md) for an explanation of the build workflow.
+
+
+
+Overview
+------------
+
+0. Manually create a community variables file
+The variables file by default should be included in a path defined by the version of libremesh and the version of openwrt that should be used, this eases and rends explicit the matching of configurations that should be applied, and is suitable e.g. for a small tech team that needs to build firmware images for different devices with configurations that may vary depending on LibreMesh or OpenWrt development.
+
+Use the community variables file to define:
+    - list of target_subtarget/devices of which build a firmware image 
+    - packages that are common to multiple devices, and to multiple target_subtarget 
+    - packages that depends on target_subtarget or device
+    - configuration files (lime-macaddress) and/or packages for specific devices
+    - environment variables about where to execute the build, where binaries should be produced
+
+1. Generate device specific configurations file based on macaddress
+
+2. Build Libremesh
+
+3. Monitoring
+  - Setup a monitoring system on a server
+    - prometheus
+    - alertmanager
+    - blackbox_exporter
+    - grafana
+  - Setup a monitoring system with a vpn
+  - Add LibreMesh devices to a monitoring system
+
+
