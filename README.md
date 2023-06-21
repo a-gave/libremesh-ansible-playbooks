@@ -6,6 +6,9 @@ This project defines some ansible playbook templates to use [Libremesh Ansible c
 They are intended to do common network administration tasks 
 useful for a tech team of a community-network based on LibreMesh.
 
+[[_TOC_]]
+
+
 Requirements
 ------------
 
@@ -56,7 +59,6 @@ Install roles and collections on which this collection depends
 The variables file by default should be included in a path defined by the version of libremesh and the version of openwrt that should be used, this eases and rends explicit the matching of configurations that should be applied, and is suitable e.g. for a small tech team that needs to build firmware images for different devices with configurations that may vary depending on LibreMesh or OpenWrt development.
 
 The example playbooks 
-
 
 
 1. Create an inventory file
@@ -136,14 +138,9 @@ remote_user = root
 [ssh_connection]
 scp_if_ssh = True
 ```
-...
 
 3. Build LibreMesh
 
     ansible-playbook build_libremesh.yml
 
-
-
-
-
-
+Read also [README_ROLES.md](./README_ROLES.md) for an explanation of the build workflow.
