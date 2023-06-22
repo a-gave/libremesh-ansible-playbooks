@@ -1,4 +1,3 @@
-
 # LibreMesh Ansible playbooks
 
 This project defines some ansible playbook templates to use [Libremesh Ansible collection](https://gitlab.com/a-gave/libremesh-ansible-collection.git)
@@ -123,27 +122,27 @@ Read also [README_ROLES.md](./README_ROLES.md) for an explanation of the build w
 Overview
 ------------
 
-0. Manually create a community variables file
+### Build Libremesh
+#### Create a community variables file
 The variables file by default should be included in a path defined by the version of libremesh and the version of openwrt that should be used, this eases and rends explicit the matching of configurations that should be applied, and is suitable e.g. for a small tech team that needs to build firmware images for different devices with configurations that may vary depending on LibreMesh or OpenWrt development.
 
 Use the community variables file to define:
-    - list of target_subtarget/devices of which build a firmware image 
-    - packages that are common to multiple devices, and to multiple target_subtarget 
-    - packages that depends on target_subtarget or device
-    - configuration files (lime-macaddress) and/or packages for specific devices
-    - environment variables about where to execute the build, where binaries should be produced
+- list of target_subtarget/devices of which build a firmware image 
+- packages that are common to multiple devices, and to multiple target_subtarget 
+- packages that depends on target_subtarget or device
+- configuration files (`lime-macaddress`) and/or packages for specific devices
+- environment variables about where to execute the build, where binaries should be produced
 
-1. Generate device specific configurations file based on macaddress
+#### Generate device specific configurations 
+Generare a device specific configuration file based on macaddress using the playbook `manage_lime_mac.yml`
 
-2. Build Libremesh
-
-3. Monitoring
-  - Setup a monitoring system on a server
+### Monitoring
+- Setup a monitoring system on a server
     - prometheus
     - alertmanager
     - blackbox_exporter
     - grafana
-  - Setup a monitoring system with a vpn
-  - Add LibreMesh devices to a monitoring system
+- Setup a monitoring system with a vpn
+- Add LibreMesh devices to a monitoring system
 
 
