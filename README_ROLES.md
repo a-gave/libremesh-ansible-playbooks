@@ -18,7 +18,7 @@ The use of these roles involve performing this operations listed:
 - libremesh_community (es. `libremesh`)
 - libremesh_community_variables_file (es. `stable`)
 
-#### 2 - Define a list of devices for which to build a firmare image
+#### 2 - Define a list of devices for which to build a firmware image
 In the playbook itself or in `libremesh_community_variables_file` at:     
 ./community/libremesh_{libremesh_version}/openwrt_{openwrt_version}/{libremesh_community}/{libremesh_community_variables_file}.yml`
 
@@ -31,7 +31,7 @@ This playbook will execute the following operations:
 
 ### Build role workflow
 
-#### 1 - Include all variables files
+#### 1 - Include variables files based on mandatory variables
 Expand the variables list based on selected `mandatory variables` looking in this files:
 
 ***define default packages and configs to build libremesh for selected openwrt version***    
