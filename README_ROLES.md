@@ -56,11 +56,11 @@ For each openwrt target_subtarget:
 Print a debug file in /tmp/log/ with the summary of all information collected so far
 
 ##### 2.3 - Run the selected role preparing it's environment and installing it's components
-- if `openwrt_buildroot` is choosen:
+- if `openwrt_buildroot` is chosen:
     - install the requirements
     - clone specified openwrt_buildroot version in the folder {openwrt_dir}/libremesh_{libremesh_version}openwrt_buildroot_{openwrt_version}
     - add libremesh feeds
-- if `openwrt_imagebuilder` is choosen:
+- if `openwrt_imagebuilder` is chosen:
     - install the requirements
     - clone specified openwrt_imagebuilder version in the folder {openwrt_dir}/libremesh_{libremesh_version}openwrt_imagebuilder_{openwrt_version}
     - add libremesh feeds
@@ -76,7 +76,10 @@ With packages and configurations selected in the included variables file:
 - libremesh_community_variables_file_packages (es. `profile-libremesh-suggested-packages` [0] `luci`)
 - libremesh_community_variables_file_target_subtarget_packages (device packages related to target_subtarget)
 
-[0] This select the recommended packages based on the documentation on the site https://libremesh.org/development
+[0] This select the recommended packages:
+- based on the documentation on the site of libremesh at https://libremesh.org/development
+- through the package defined in the network profile of libremesh at https://github.com/libremesh/network-profiles/tree/master/libremesh/suggested-packages
+- more information at https://libremesh.org/development-network_profiles.html
 
 #### 4 - Loop devices
 For each openwrt target_subtarget_device:
