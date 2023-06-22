@@ -122,7 +122,7 @@ Read also [README_ROLES.md](./README_ROLES.md) for an explanation of the build w
 Overview
 ------------
 
-### Build Libremesh
+### Build firmware images
 #### Create a community variables file
 The variables file by default should be included in a path defined by the version of libremesh and the version of openwrt that should be used, this eases and rends explicit the matching of configurations that should be applied, and is suitable e.g. for a small tech team that needs to build firmware images for different devices with configurations that may vary depending on LibreMesh or OpenWrt development.
 
