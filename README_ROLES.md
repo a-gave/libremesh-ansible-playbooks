@@ -50,8 +50,9 @@ For each openwrt target_subtarget:
 
 ##### 2.1 - Include target_subtarget related variables
 from this file:
+
+***This file define a list of supported devices, and define packages and configs to keep compatibility between the default of libremesh (babeld+batman-adv), based on selected {libremesh_version} and the selected {openwrt_version}***                             
 - <libremesh-ansible-collection_installation-path>/target/libremesh_{libremesh_version}/openwrt_{openwrt_version}/{openwrt_target}_{openwrt_subtarget}.yml        
-this define a list of supported devices, and define packages and configs to keep compatibility between the default of libremesh (babeld+batman-adv), based on selected {libremesh_version} and the selected {openwrt_version}
 
 ##### 2.2 - Print debug 
 Print a debug file in /tmp/log/ with the summary of all information collected so far
