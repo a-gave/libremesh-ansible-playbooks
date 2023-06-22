@@ -29,9 +29,9 @@ ansible-playbook build_libremesh.yml
 
 This playbook will execute the following operations:
 
-### Build role Workflow
+### Build role workflow
 
-#### 1 - Include all variables file
+#### 1 - Include all variables files
 Expand the variables list based on selected `mandatory variables` looking in this files:
 
 ***define default packages and configs to build libremesh for selected openwrt version***    
@@ -56,7 +56,7 @@ this define a list of supported devices, and define packages and configs to keep
 ##### 2.2 - Print debug 
 Print a debug file in /tmp/log/ with the summary of all information collected so far
 
-##### 2.3 - Run the selected role preparing it's environment
+##### 2.3 - Run the selected role preparing it's environment and installing it's components
 - if `openwrt_buildroot` is choosen:
     - install the requirements
     - clone specified openwrt_buildroot version in the folder {openwrt_dir}/libremesh_{libremesh_version}openwrt_buildroot_{openwrt_version}
