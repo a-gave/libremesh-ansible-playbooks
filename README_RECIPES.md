@@ -9,8 +9,7 @@ Then include in the playbook using the variable `libremesh_community_variables_f
 ------------
 
 ### 1. Create a community variables file:
-Create a configuration file inside the path defined by versions of LibreMesh and OpenWrt
-where, and by the community name.
+Create a configuration file inside the path defined by versions of LibreMesh and OpenWrt, and by the community name.
 
 ```
 mkdir community/libremesh_master/openwrt_22.03.5/new-community/all_devices.yml
@@ -57,12 +56,12 @@ libremesh_devices:
 ```
 
 ### 2. Add specific configurations and packages in the various levels
-If you need to customize some aspects of the recipe you can
--  include or remove `packages` and `configs` referencing:
+If you need to customize some aspects of the recipe you can:
+1. include or remove `packages` and `configs` referencing:
   - the whole file/recipe
   - a specific target_subtarget
   - a specific device
-- extend the loop of the devices including for specific device referenced by macaddress trough the `lime-macaddress` files
+2. extend the loop of the devices including for specific device referenced by macaddress trough the `lime-macaddress` files
 
 For a full list of configurations see also this file [./community/libremesh_master/openwrt_22.03.5/new-community/libremesh.defaults.yml](./community/libremesh_master/openwrt_22.03.5/new-community/libremesh.defaults.yml)
 
@@ -95,7 +94,8 @@ libremesh_devices:
     openwrt_subtarget: generic
     openwrt_devices:
 
-# build both the `regular version` and `a firmware image for a specific device` selected by macaddress. Means you have generated a specific lime-macaddress file before, using the playbook `manage_lime_mac.yml`. 
+# build both the `regular version` and `a firmware image for a specific device` selected by macaddress. 
+# Means you have generated a specific lime-macaddress file before, using the playbook.`manage_lime_mac.yml`. 
       - name: ubnt_nanostation-m-xw
         lime_mac:
           - lime_mac: lime-b4fbe4598263
@@ -106,7 +106,10 @@ libremesh_devices:
           - lime_mac: lime-802aa8b71afc
             hostname: formica
 
-# customized packages and for this device, in this case is a test of compatibility for libremesh with the same packages listed at https://github.com/freifunk-gluon/gluon/blob/master/targets/ath79-generic, if this pass the test they could be added in https://gitlab.com/a-gave/libremesh-ansible-collection/-/blob/master/target/libremesh_master/openwrt_22.03.5/ath79_generic.yml
+# Customized packages and for this device, in this case is a test of compatibility for libremesh
+# with the same packages listed at https://github.com/freifunk-gluon/gluon/blob/master/targets/ath79-generic
+# if this pass the test they could be added in https://gitlab.com/a-gave/libremesh-ansible-collection/-/blob/master/target/libremesh_master/openwrt_22.03.5/ath79_generic.yml
+
       - name: tplink_archer-d50-v1
         packages:
         	kmod-ath10k-smallbuffers
