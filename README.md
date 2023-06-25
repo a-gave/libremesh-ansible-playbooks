@@ -86,7 +86,7 @@ Add the path to find the key in your passwordstore, in this example is `buildhos
     builder_become_pass: "{{ lookup('passwordstore', 'buildhost/user/root', errors='strict') | default(omit) }}"
     EOF
 
-### 3 Setup ansible configuration file
+### 3. Setup the ansible local configuration file
 https://docs.ansible.com/ansible/latest/reference_appendices/config.html
 
 Copy the default ansible configuration file
@@ -116,7 +116,7 @@ scp_if_ssh = True
     ansible-playbook build_libremesh.yml
 
 Read also [README_ROLES.md](./README_ROLES.md) for an explanation of the build workflow.
-
+Read also [README_RECIPES.md](./README_RECIPES.md) for an explanation of the configurations files.
 
 
 Overview
