@@ -1,0 +1,11 @@
+---
+- name: Monitor nodes
+  hosts: belvedere
+  gather_facts: yes
+  become: yes
+  roles:
+    - 'libremesh.libremesh.monitoring.prometheus'
+    - 'libremesh.libremesh.monitoring.blackbox_exporter'
+    - 'libremesh.libremesh.monitoring.alertmanager'
+    - 'libremesh.libremesh.monitoring.grafana'
+

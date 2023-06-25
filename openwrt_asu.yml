@@ -1,0 +1,27 @@
+---
+- name: Build LibreMesh {{ libremesh_version }}
+  hosts: ada
+  gather_facts: no
+  vars:
+    libremesh_version: master
+    openwrt_version: 22.03.5
+    openwrt_asu_server_host_port: '8085'
+    libremesh_devices:
+    - openwrt_target: ath79
+      openwrt_subtarget: generic
+
+    - openwrt_target: ramips
+      openwrt_subtarget: mt76x8
+
+    - openwrt_target: ramips
+      openwrt_subtarget: mt7620
+
+    - openwrt_target: ramips
+      openwrt_subtarget: mt7621
+
+    - openwrt_target: x86
+      openwrt_subtarget: 64
+  roles: 
+    - libremesh.libremesh.openwrt_asu 
+  vars_files:
+    - "group_vars/{{ password_system }}.yml"
