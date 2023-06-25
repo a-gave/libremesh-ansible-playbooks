@@ -1,11 +1,23 @@
 ---
 - name: Monitor nodes
-  hosts: belvedere
+  hosts: monitor
   gather_facts: yes
   become: yes
+  vars_files:
+    - "group_vars/{{ password_system }}.yml"
+
+  # pre_tasks happen before roles are executed / applied
+  pre_tasks: 
+    - name: Include Monitoring variables dir
+      ansible.builtin.include_vars:
+        dir: vars/monitoring/
+
+  # roles are ran after pre_tasks
   roles:
     - 'libremesh.libremesh.monitoring.prometheus'
     - 'libremesh.libremesh.monitoring.blackbox_exporter'
     - 'libremesh.libremesh.monitoring.alertmanager'
     - 'libremesh.libremesh.monitoring.grafana'
 
+  # tasks are ran after roles
+  tasks: []
