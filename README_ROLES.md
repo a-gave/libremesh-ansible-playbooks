@@ -16,11 +16,11 @@ The use of these roles involve performing this operations listed:
 - libremesh_version (es. `2020.3`)
 - openwrt_version (es. `19.07.10`)
 - libremesh_community (es. `libremesh`)
-- libremesh_community_variables_file (es. `stable`)
+- libremesh_community_recipe (es. `stable`)
 
 #### 2 - Define a list of devices for which to build a firmware image
-In the playbook itself or in `libremesh_community_variables_file` at:     
-./community/libremesh_{libremesh_version}/openwrt_{openwrt_version}/{libremesh_community}/{libremesh_community_variables_file}.yml`
+In the playbook itself or in `libremesh_community_recipe` at:     
+./community/libremesh_{libremesh_version}/openwrt_{openwrt_version}/{libremesh_community}/{libremesh_community_recipe}.yml`
 
 #### 3 - Launch playbook
 ```
@@ -42,7 +42,7 @@ Expand the variables list based on selected `mandatory variables` looking in thi
 ./community/libremesh_{libremesh_version}/openwrt_{openwrt_version}/{libremesh_community}/main.yml      
 
 ***define variables specific to the build: libremesh_devices - the list of devices, libremesh_packages - the list of packages common to every device specified***                 
-./community/libremesh_{libremesh_version}/openwrt_{openwrt_version}/{libremesh_community}/{libremesh_community_variables_file}.yml       
+./community/libremesh_{libremesh_version}/openwrt_{openwrt_version}/{libremesh_community}/{libremesh_community_recipe}.yml       
 
 
 #### 2 - Loop targets
@@ -73,8 +73,8 @@ Configure libremesh for selected:
 With packages and configurations selected in the included variables file:
 - libremesh_version_packages (es. `-dnsmasq -ppp -odhcp_ipv6only`)
 - libremesh_target_subtarget_packages (es `-procd-ujail` for bcm63xx)
-- libremesh_community_variables_file_packages (es. `profile-libremesh-suggested-packages` [0] `luci`)
-- libremesh_community_variables_file_target_subtarget_packages (device packages related to target_subtarget)
+- libremesh_community_recipe_packages (es. `profile-libremesh-suggested-packages` [0] `luci`)
+- libremesh_community_recipe_target_subtarget_packages (device packages related to target_subtarget)
 
 [0] This select the recommended packages:
 - based on the documentation on the site of libremesh at https://libremesh.org/development
@@ -87,7 +87,7 @@ For each openwrt target_subtarget_device:
 ##### 4.1 - Configure single device
 Configure libremesh for specified device with packages and configurations selected in the included variables file:
 - libremesh_target_subtarget_device_packages (device specific packages to work with libremesh default)
-- libremesh_community_variables_file_target_subtarget_device_packages (device specific packages based on choosen profile)
+- libremesh_community_recipe_target_subtarget_device_packages (device specific packages based on choosen profile)
 
 ##### 4.2 - Print debug of single device: configs and packages
 Add information to the debug file in /tmp/log/ with selected configs for the device

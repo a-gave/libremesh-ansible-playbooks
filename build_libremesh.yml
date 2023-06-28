@@ -6,7 +6,7 @@
     libremesh_version: master
     openwrt_version: 22.03.5
     libremesh_community: libremesh
-    libremesh_community_variables_file: stable
+    libremesh_community_recipe: stable
     # skip_install_openwrt_imagebuilder_docker_requirements: true
     openwrt_targets:
       - openwrt_target: ath79

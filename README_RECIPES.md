@@ -2,7 +2,7 @@
 # Build Recipes
 
 Create specific variables files for groups of devices.
-Then include in the playbook using the variable `libremesh_community_variables_file`.
+Then include in the playbook using the variable `libremesh_community_recipe`.
 
 [[_TOC_]]
 
@@ -152,7 +152,7 @@ libremesh_devices:
     libremesh_version: master
     openwrt_version: 22.03.5
     libremesh_community: new-community
-    libremesh_community_variables_file: devices_group0 
+    libremesh_community_recipe: devices_group0 
   roles: 
     - libremesh.libremesh.openwrt_imagebuilder_docker     
 ```
