@@ -13,19 +13,23 @@ Requirements
 
 Install Ansible requirements:
 
-    apt install ansible python3-pip
-    pip3 install jinja2-ansible-filters
+```
+apt install ansible python3-pip
+pip3 install jinja2-ansible-filters
+```
 
 To use the ansible commands `ansible-playbook`, `ansible-galaxy`
 Add the `~/.local/bin` path to your .bashrc or .bash_profile
 
-    echo "export PATH=$PATH:$HOME/.local/bin" >> ~/.bashrc
-    source ~/.bashrc
+```
+echo "export PATH=$PATH:$HOME/.local/bin" >> ~/.bashrc
+source ~/.bashrc
+```
 
 Clone this project
 ```
-    git clone https://gitlab.com/a-gave/libremesh-ansible-playbooks.git
-    cd libremesh-ansible-playbooks
+git clone https://gitlab.com/a-gave/libremesh-ansible-playbooks.git
+cd libremesh-ansible-playbooks
 ```
 
 Dependencies
