@@ -22,22 +22,26 @@ libremesh_packages:
   - profile-libremesh-suggested-packages
 
 libremesh_devices:
-- openwrt_target: ath79
-  openwrt_subtarget: generic
-  packages: 
-    - luci
-  openwrt_devices:
-    - name: ubnt_nanostation-m-xw
-      lime_mac:
-        - lime_mac: lime-b4fbe4598263
-          hostname: mantide
-    - name: ubnt_nanostation-loco-m-xw
-      lime_mac:
-        - lime_mac: lime-802aa8b71afc
-          hostname: formica
-- openwrt_target: ramips
-  openwrt_subtarget: mt76x8
-  openwrt_devices:
-    - name: tplink_tl-mr6400-v4
-- openwrt_target: x86
-  openwrt_subtarget: 64  
+
+  - openwrt_target: ath79
+    openwrt_subtarget: generic
+    packages: 
+      - luci
+    openwrt_devices:
+    
+      - name: ubnt_nanostation-m-xw
+        lime_mac:
+          - lime_mac: lime-b4fbe4598263
+            hostname: mantide
+
+      - name: ubnt_nanostation-loco-m-xw
+        lime_mac:
+          - lime_mac: lime-802aa8b71afc
+            hostname: formica
+
+  - openwrt_target: ramips
+    openwrt_subtarget: mt76x8
+    openwrt_devices:
+      - name: tplink_tl-mr6400-v4
+  - openwrt_target: x86
+    openwrt_subtarget: 64  

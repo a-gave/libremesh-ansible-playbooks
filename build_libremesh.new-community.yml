@@ -3,10 +3,10 @@
   hosts: localhost
   gather_facts: no
   vars:
-    libremesh_community: new-community
-    libremesh_community_variables_file: stable
-    libremesh_version: 2023.1
+    libremesh_version: master
     openwrt_version: 22.03.5
+    libremesh_community: new-community
+    libremesh_community_recipe: stable
     openwrt_targets:
       - openwrt_target: ath79
         openwrt_subtarget: generic
