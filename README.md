@@ -13,7 +13,7 @@ Requirements
 
 Install Ansible requirements:
 
-    pip3 install ansible
+    apt install ansible python3-pip
     pip3 install jinja2-ansible-filters
 
 To use the ansible commands `ansible-playbook`, `ansible-galaxy`
@@ -21,6 +21,12 @@ Add the `~/.local/bin` path to your .bashrc or .bash_profile
 
     echo "export PATH=$PATH:$HOME/.local/bin" >> ~/.bashrc
     source ~/.bashrc
+
+Clone this project
+```
+    git clone https://gitlab.com/a-gave/libremesh-ansible-playbooks.git
+    cd libremesh-ansible-playbooks
+```
 
 Dependencies
 ------------
@@ -111,23 +117,48 @@ remote_user = root
 scp_if_ssh = True
 ```
 
-### 4. Build LibreMesh
+### 4. Setup the example playbook
+Select devices of which to build a libremesh firmware image, in the playbook file `build_libremesh.yml`. In this example the selected device is `ubnt_nanostation-m-xw`.
+
+```
+---
+- name: Build LibreMesh {{ libremesh_version }}
+  hosts: localhost
+  gather_facts: no
+  vars:
+    libremesh_version: master
+    openwrt_version: 22.03.5
+    libremesh_community: libremesh
+    libremesh_community_recipe: stable
+    openwrt_targets:
+      - openwrt_target: ath79
+        openwrt_subtarget: generic
+        openwrt_devices: 
+          - name: ubnt_nanostation-m-xw    
+  roles: 
+    - libremesh.libremesh.openwrt_imagebuilder_docker   
+```
+
+This select a default recipe located at `community/libremesh_master/openwrt_22.03.5/libremesh/stable.yml` that include the default set of packages for libremesh using the network profiles https://github.com/libremesh/network-profiles.git
+
+Read also [README_RECIPES.md](./README_RECIPES.md) for an explanation of the configurations files.
+
+
+### 5. Build LibreMesh
 
     ansible-playbook build_libremesh.yml
 
 Read also [README_ROLES.md](./README_ROLES.md) for an explanation of the build workflow.
-
-Read also [README_RECIPES.md](./README_RECIPES.md) for an explanation of the configurations files.
 
 
 Overview
 ------------
 
 ### Build firmware images
-#### Create a community variables file
+#### Create a community recipe
 The variables file by default should be included in a path defined by the version of libremesh and the version of openwrt that should be used, this eases and rends explicit the matching of configurations that should be applied, and is suitable e.g. for a small tech team that needs to build firmware images for different devices with configurations that may vary depending on LibreMesh or OpenWrt development.
 
-Use the community variables file to define:
+Use the community recipe to define:
 - list of target_subtarget/devices of which build a firmware image 
 - packages that are common to multiple devices, and to multiple target_subtarget 
 - packages that depends on target_subtarget or device
