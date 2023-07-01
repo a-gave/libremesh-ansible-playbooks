@@ -37,6 +37,8 @@ Install roles and collections on which this collection depends
 
 Quick start Build
 ------------
+
+### Manually install role's requirements
 By default in `host_vars/localhost.yml` all requirements installation are declined for `localhost` that is the selected host for the example playbook.
 You can define a root password for the builder machine via `community.general.passwordstore lookup` or `ansible-vault` or install manually the role related requirements.
 
@@ -52,6 +54,7 @@ Ensure docker is working running
 docker ps
 ```
 
+### Run the example playbook
 Copy the default files and run the example playbook
 ```
 cp hosts.example hosts
