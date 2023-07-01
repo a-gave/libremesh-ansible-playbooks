@@ -35,6 +35,30 @@ Install roles and collections on which this collection depends
     ansible-galaxy install -r requirements.yml
 
 
+Quick start Build
+------------
+By default in `host_vars/localhost.yml` all requirements installation are declined for `localhost` that is the selected host for the example playbook.
+You can define a root password for the builder machine via `community.general.passwordstore lookup` or `ansible-vault` or install manually the role related requirements.
+
+For example to run the example playbook `build_libremesh` install docker:
+```
+apt install docker.io
+newgrp docker; usermod -aG docker $USER
+systemctl daemon-reload
+```
+
+Ensure docker is working running
+```
+docker ps
+```
+
+Copy the default files and run the example playbook
+```
+cp hosts.example hosts
+cp ansible.cfg.example ansible.cfg
+ansible-playbook build_libremesh.yml
+```
+
 Get started
 ------------
 
