@@ -223,13 +223,13 @@ Executed for
 - `libremesh-master` based on `openwrt-22.03.5`
 - `libremesh-2020.3` based on `openwrt-19.07.10`
 
-![firmware_libremesh](./firmware_libremesh.png)
+![firmware_libremesh](./docs/images/firmware_libremesh.png)
 
 The corresponding demo LibreMesh firmware selector is available at:
 
 http://firmware-libremesh.antennine.campiinrete.org/selector
 
-![firmware_selector_libremesh](./firmware_selector_libremesh.png)
+![firmware_selector_libremesh](./docs/images/firmware_selector_libremesh.png)
 
 
 The same, but with the profiles of the community `valsamoggia.ninux.org` selected
