@@ -38,7 +38,7 @@ Expand the variables list based on selected `mandatory variables` looking in thi
 <libremesh-ansible-collection_installation-path>/target/libremesh_{libremesh_version}/openwrt_{openwrt_version}/main.yml
       
 
-***define common community variables***         
+***define community main variables***         
 ./community/libremesh_{libremesh_version}/openwrt_{openwrt_version}/{libremesh_community}/main.yml      
 
 ***define variables specific to the build: libremesh_devices - the list of devices, libremesh_packages - the list of packages common to every device specified***                 

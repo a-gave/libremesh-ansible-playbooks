@@ -209,3 +209,31 @@ Generare a device specific configuration file based on macaddress using the play
 - Add LibreMesh devices to a monitoring system
 
 
+DEMO instance for firmwares
+------------
+A demonstrative webserver for LibreMesh firmwares is available at
+
+http://firmware-libremesh.antennine.campiinrete.org/
+
+Based on the recipe `libremesh/stable.yml` that basically:
+- deselect problematic packages and configs for: libremesh/openwrt version, target/subtarget, specific devices
+- add the default lime-community file selecting the network profile package `profile-libremesh-default` and add the suggested packages via the network profile package `profile-libremesh-suggested-packages`. These are availables via source at https://github.com/libremesh/network-profiles/tree/master/libremesh and via pre-compiled packages https://github.com/libremesh/lime-feed/tree/gh-pages/profiles (https://feed.libremesh.org/profiles)
+
+Executed for
+- `libremesh-master` based on `openwrt-22.03.5`
+- `libremesh-2020.3` based on `openwrt-19.07.10`
+
+![firmware_libremesh](./firmware_libremesh.png)
+
+The corresponding demo LibreMesh firmware selector is available at:
+
+http://firmware-libremesh.antennine.campiinrete.org/selector
+
+![firmware_selector_libremesh](./firmware_selector_libremesh.png)
+
+
+The same, but with the profiles of the community `valsamoggia.ninux.org` selected
+
+http://firmware-valsamoggia.antennine.campiinrete.org/
+
+
