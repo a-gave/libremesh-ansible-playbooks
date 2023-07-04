@@ -227,13 +227,13 @@ Executed for
 
 The corresponding demo LibreMesh firmware selector is available at:
 
-http://firmware-libremesh.antennine.campiinrete.org/selector
+https://firmware-libremesh.antennine.campiinrete.org/selector
 
 ![firmware_selector_libremesh](./docs/images/firmware_selector_libremesh.png)
 
 
 The same, but with the profiles of the community `valsamoggia.ninux.org` selected
 
-http://firmware-valsamoggia.antennine.campiinrete.org/
+https://firmware-valsamoggia.antennine.campiinrete.org/
 
 

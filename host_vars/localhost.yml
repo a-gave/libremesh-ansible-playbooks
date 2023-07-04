@@ -20,3 +20,7 @@ skip_install_openwrt_sdk_docker_requirements: true
 # OpenWrt SDK options
 openwrt_sdk_download_dir: "{{ openwrt_dir }}/openwrt_sdk"
 skip_install_openwrt_sdk_requirements: true
+
+
+# OpenWrt Firmware Selector
+skip_install_openwrt_firmware_selector_requirements: true

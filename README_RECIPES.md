@@ -8,7 +8,7 @@ Then include in the playbook using the variable `libremesh_community_recipe`.
 
 ------------
 
-### 1. Create a community variables file:
+### 1. Create a community recipe:
 Create a configuration file inside the path defined by versions of LibreMesh and OpenWrt, and by the community name.
 
 ```
@@ -54,8 +54,34 @@ libremesh_devices:
       - name: sagem_fast-2704n
 
 ```
+### 2. Create a lime-macaddress file
 
-### 2. Add specific configurations and packages in the various levels
+Add the property `lime_mac` to a `openwrt_device` and define:
+the `lime-macaddress` and an `hostname` as they will we added to the hosts inventory file
+
+Example:
+```
+# community/libremesh_master/openwrt_22.03.5/new-community/all_devices.yml
+# List of devices to build with specified profile
+
+libremesh_devices_packages:
+  - profile-valsamoggia.ninux.org-vs-ninux-generic
+  - batctl-default
+
+libremesh_devices:
+  - openwrt_target: ath79
+    openwrt_subtarget: generic
+    openwrt_devices:
+      - name: ubnt_nanostation-m-xw
+        lime_mac:
+          - lime_mac: lime-b4fbe4598263
+            hostname: mantide
+
+```
+
+
+
+### 3. Add specific configurations and packages in the various levels
 If you need to customize some aspects of the recipe you can:
 1. include or remove `packages` and `configs` referencing:
   - the whole file/recipe
