@@ -28,7 +28,7 @@ libremesh_devices:
     packages: 
       - luci
     openwrt_devices:
-    
+
       - name: ubnt_nanostation-m-xw
         lime_mac:
           - lime_mac: lime-b4fbe4598263
@@ -43,5 +43,6 @@ libremesh_devices:
     openwrt_subtarget: mt76x8
     openwrt_devices:
       - name: tplink_tl-mr6400-v4
+      
   - openwrt_target: x86
     openwrt_subtarget: 64  

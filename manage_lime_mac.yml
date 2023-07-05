@@ -3,10 +3,10 @@
   hosts: localhost
   gather_facts: no
   vars:
-    libremesh_version: 2023.1
+    libremesh_version: master
     openwrt_version: 22.03.5   
     libremesh_community: new-community
-    libremesh_community_recipe: stable
+    libremesh_community_recipe: libremesh.default
     # skip_init_vars_lime_mac: true                      # skip this if initialization of lime-mac variables doesn't need to be executed
     # skip_generate_lime_mac: false                      # don't skip if you already had configured the hostvars/lime_mac files for each devices
     # skip_update_vpn_wg_server: false                   # don't skip if you are ready to update wireguard server
