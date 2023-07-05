@@ -70,15 +70,15 @@ Overview
 
 ### Build LibreMesh firmware images
 
-#### Create a recipe for a specific libremesh community
+Create a file called recipe to define common configurations for different devices.
 The recipe file by default should be included in a path defined by the version of libremesh and by the version of openwrt that should be used, this eases and rends explicit the matching of configurations that should be applied, and is suitable e.g. for a small tech team that needs to build firmware images for different devices with configurations that may vary depending on LibreMesh or OpenWrt development.
 
-Use the community recipe to define:
+Use the recipe to define:
 - list of target_subtarget/devices of which build a firmware image 
 - packages that are common to multiple devices, and to multiple target_subtarget 
 - packages that depends on target_subtarget or device
 - configuration files (`lime-macaddress`) and/or packages for specific devices
-- environment variables about where to execute the build, where binaries should be produced
+- environment variables about where to execute the build, where binaries should be produced, etc.
 
 Read more at [docs/recipes.md](docs/recipes.md) for the full list of configurations for a recipe.
 
