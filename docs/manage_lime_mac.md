@@ -68,7 +68,7 @@ libremesh_devices:
             hostname: formica
 ```
 
-### Initialize the devices as ansible hosts
+### Add the devices to an ansible inventory as hosts
 
 This command will generate an inventory file at `inventory/libremesh_devices.yml` with hosts selected by the chosen recipe.
 And a variables file for each device located at `host_vars/<lime-macaddress>.yml`.
@@ -77,9 +77,9 @@ And a variables file for each device located at `host_vars/<lime-macaddress>.yml
 ansible-playbook manage_lime_mac.yml
 ```
 
-### Generate a lime-macaddress file for the device
+### Generate a lime-macaddress file for each device
 
-Edit the variables file at `host_vars/<lime-macaddress>` to add configurations or modify default values.
+Edit the variables file at `host_vars/<lime-macaddress>.yml` to add configurations or modify default values.
 
 Then run again the playbook skipping the initialization to generate the lime-macaddress files under `./lime-mac/<lime-macaddress>`
 
@@ -90,7 +90,7 @@ ansible-playbook -i inventory/ manage_lime_mac.yml -e "{ skip_init_vars_lime_mac
 
 ## Add Wireguard keys generation
 
-### Generate wireguard keys as hostvars
+### Define the wireguard network options in the recipe file
 
 Define network related variables for the wireguard vpn in the file of the chosen recipe. 
 ```
@@ -100,12 +100,14 @@ vpn_wg0_network: "192.168"
 vpn_wg0_netmask: "/16"
 ```
 
+### Generate wireguard keys as host's variables
+
 Re-run the playbook to generate also the wireguard keys 
 ```
 ansible-playbook manage_lime_mac.yml
 ```
 
-### Add the device as a peer in vpn server based on wireguard
+### Add each device as a peer in the wireguard server
 
 Requires a host with a public ip that acts as a vpn server defined as `wg_server` in an inventory file.
 
