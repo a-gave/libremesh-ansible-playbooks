@@ -1,0 +1,26 @@
+---
+- name: Build LibreMesh {{ libremesh_version }}
+  hosts: localhost
+  gather_facts: no
+  vars:
+    libremesh_version: 2020.3
+    openwrt_version: 19.07.10
+    libremesh_community: libremesh
+    libremesh_community_recipe: stable
+    openwrt_firmware_selector_port: 9011
+    openwrt_imagebuilder_docker_bin_dir: "{{ playbook_dir }}/openwrt_build/openwrt_imagebuilder_docker_19.07.10/images/libremesh/stable/targets"
+  roles: 
+    - libremesh.libremesh.openwrt_firmware_selector 
+
+- name: Build LibreMesh {{ libremesh_version }}
+  hosts: localhost
+  gather_facts: no
+  vars:
+    libremesh_version: master
+    openwrt_version: 22.03.5
+    libremesh_community: libremesh
+    libremesh_community_recipe: stable
+    openwrt_firmware_selector_port: 9011
+    openwrt_imagebuilder_docker_bin_dir: "{{ playbook_dir }}/openwrt_build/openwrt_imagebuilder_docker_22.03.5/images/libremesh/stable/targets"
+  roles: 
+    - libremesh.libremesh.openwrt_firmware_selector    
