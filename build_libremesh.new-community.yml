@@ -6,12 +6,7 @@
     libremesh_version: master
     openwrt_version: 22.03.5
     libremesh_community: new-community
-    libremesh_community_recipe: stable
-    openwrt_targets:
-      - openwrt_target: ath79
-        openwrt_subtarget: generic
-        openwrt_devices: 
-        - name: ubnt_nanostation-m-xw    
+    libremesh_community_recipe: libremesh.defaults
   roles: 
     - libremesh.libremesh.openwrt_imagebuilder_docker
     # - libremesh.libremesh.openwrt_imagebuilder

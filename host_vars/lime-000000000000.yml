@@ -1,14 +1,16 @@
 # BEGIN ANSIBLE MANAGED BLOCK lime-000000000000 utils
-ip_host: 0.0
+ipv4_host: 0.0
 # END ANSIBLE MANAGED BLOCK lime-000000000000 utils
 # BEGIN ANSIBLE MANAGED BLOCK lime-000000000000 common
-hostname: ninux-000000
+hostname: LiMe-000000
 lime_mac: lime-000000000000
-main_ipv4_address: 10.170.0.0/16
+main_ipv4_address: 10.13.0.0/16
 # END ANSIBLE MANAGED BLOCK lime-000000000000 common
 # BEGIN ANSIBLE MANAGED BLOCK lime-000000000000 config
-config_lime_system: option hostname 'ninux-000000'
-config_lime_wifi: option channel_5ghz '48'
+config_lime_system: |
+  option hostname 'ninux-000000'
+config_lime_wifi: |
+  option channel_5ghz '48'
 # END ANSIBLE MANAGED BLOCK lime-000000000000 config
 # BEGIN ANSIBLE MANAGED BLOCK lime-000000000000 vpn wireguard wg0
 vpn_wg0_privatekey: UIHZ9uTOxW07jHTQHAzUvmWAS6tkPtQWqZU9Gp6LcHY=

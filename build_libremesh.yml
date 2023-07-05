@@ -7,17 +7,11 @@
     openwrt_version: 22.03.5
     libremesh_community: libremesh
     libremesh_community_recipe: stable
-    # skip_install_openwrt_imagebuilder_docker_requirements: true
     openwrt_targets:
       - openwrt_target: ath79
         openwrt_subtarget: generic
         openwrt_devices: 
-        - name: ubnt_nanostation-m-xw    
+          - name: ubnt_nanostation-m-xw    
   roles: 
     - libremesh.libremesh.openwrt_imagebuilder_docker       
-  # Enable ask pass or install requirements manually
-  # vars_prompt:
-  #   - name: "ansible_become_pass"
-  #     prompt: "Sudo password"
-  #     private: yes
 
