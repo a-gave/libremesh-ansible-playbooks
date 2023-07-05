@@ -138,11 +138,11 @@ libremesh_devices:
 
       - name: tplink_archer-d50-v1
         packages:
-        	kmod-ath10k-smallbuffers
-          -kmod-ath10k-ct
-          -kmod-ath10k-ct-smallbuffers
-          ath10k-firmware-qca988x
-          -ath10k-firmware-qca988x-ct
+        	- kmod-ath10k-smallbuffers
+          - -kmod-ath10k-ct
+          - -kmod-ath10k-ct-smallbuffers
+          - ath10k-firmware-qca988x
+          - -ath10k-firmware-qca988x-ct
 
       - name: tplink_cpe510-v1
       - name: tplink_cpe510-v3
@@ -185,9 +185,9 @@ libremesh_devices:
 
 The output of the firmware images will be by default at:
 
-./openwrt_build/libremesh_master/openwrt_imagebuilder_docker_22.03.5/images/new-community/devices_group0/targets/{openwrt_target}/{openwrt_subtarget}
+`./openwrt_build/libremesh_master/openwrt_imagebuilder_docker_22.03.5/images/new-community/devices_group0/targets/`
 
 
 The output of `lime-macaddress` related firmware images will be by default at:
 
-./openwrt_build/libremesh_master/openwrt_imagebuilder_docker_22.03.5/images/new-community/devices_group0/lime-mac/<lime_macaddress>/
+`./openwrt_build/libremesh_master/openwrt_imagebuilder_docker_22.03.5/images/new-community/devices_group0/lime-mac/`

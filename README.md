@@ -103,8 +103,8 @@ Read more about the example playbook `manage_lime_mac.yml` at [docs/manage_lime_
     - alertmanager
     - blackbox_exporter
     - grafana
-- Setup a monitoring system with a vpn (**requires at least one device with a public ip address**)
-- Add LibreMesh devices to a monitoring system
+- Add libremesh devices to the monitoring system
+- Link hosts that do monitoring to remote libremesh devices using a vpn (wireguard) (**requires at least one device with a public ip address**)
 
 
 Build LibreMesh firmwares
