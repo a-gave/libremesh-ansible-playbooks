@@ -20,7 +20,7 @@ ipv4_netmask: "/16"
 
 ### Setup the playbook
 
-Edit the playbook file `manage_lime_mac.yml` selecting the choosen recipe
+Edit the playbook file `manage_lime_mac.yml` selecting the chosen recipe.
 
 ```
 ---
@@ -43,8 +43,10 @@ Edit the playbook file `manage_lime_mac.yml` selecting the choosen recipe
 
 ### Initialize the devices as ansible hosts
 
+This will generate an inventory file at `inventory/libremesh_devices.yml` with hosts selected by the chosen recipe.
+
 ```
-ansible-playbook -i inventory manage_lime_mac.yml
+ansible-playbook manage_lime_mac.yml
 ```
 
 ### Generate a lime-macaddress file for the device
@@ -52,6 +54,7 @@ ansible-playbook -i inventory manage_lime_mac.yml
 Edit the variables file at `host_vars/<lime-macaddress>` to add configurations or modify default values.
 
 Then run again the playbook skipping the initialization to generate the lime-macaddress files under `./lime-mac/<lime-macaddress>`
+
 ```
 ansible-playbook -i inventory/ manage_lime_mac.yml -e "{ skip_init_vars_lime_mac: true, skip_generate_lime_mac: false }" 
 ```
