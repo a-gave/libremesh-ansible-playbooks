@@ -107,7 +107,7 @@ Read more about the example playbook `manage_lime_mac.yml` at [docs/manage_lime_
 - Add LibreMesh devices to a monitoring system
 
 
-Build LibreMesh firmware images
+Build LibreMesh firmwares
 ------------
 
 ### Get started
