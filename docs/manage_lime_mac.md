@@ -1,6 +1,6 @@
 # Manage lime mac
 
-[[TOC]]
+[[_TOC_]]
 
 ## Setup the playbook
 
