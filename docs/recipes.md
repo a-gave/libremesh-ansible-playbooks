@@ -1,27 +1,23 @@
 
-# Build Recipes
+# Recipes
 
 Create specific variables files for groups of devices.
-Then include in the playbook using the variable `libremesh_community_recipe`.
+Then include one of them in the playbook using the variable `libremesh_community_recipe`.
 
 [[_TOC_]]
 
 ------------
 
-### 1. Create a community recipe:
-Create a configuration file inside the path defined by versions of LibreMesh and OpenWrt, and by the community name.
+### 1. Look at the example recipe
+In this file `example_recipe` there is the recipe for the community `new-community` based on openwrt-22.03.5, compiled with libremesh at the version master.
 
 ```
-mkdir community/libremesh_master/openwrt_22.03.5/new-community/all_devices.yml
-```
-
-```
-# community/libremesh_master/openwrt_22.03.5/new-community/all_devices.yml
+# community/libremesh_master/openwrt_22.03.5/new-community/example_recipe.yml
 # List of devices to build with specified profile
 
 libremesh_devices_packages:
-  - profile-valsamoggia.ninux.org-vs-ninux-generic
-  - batctl-default
+  - profile-libremesh-suggested-packages
+  - profile-libremesh-defaults
 
 libremesh_devices:
   - openwrt_target: ath79
@@ -32,11 +28,6 @@ libremesh_devices:
       - name: tplink_archer-d50-v1
       - name: tplink_cpe510-v1
       - name: tplink_cpe510-v3
-
-  - openwrt_target: ramips
-    openwrt_subtarget: mt76x8
-    openwrt_devices:
-      - name: tplink_tl-mr6400-v4
 
   - openwrt_target: ramips
     openwrt_subtarget: mt76x8
@@ -54,10 +45,23 @@ libremesh_devices:
       - name: sagem_fast-2704n
 
 ```
-### 2. Create a lime-macaddress file
+This is an example recipe, used by the playbook `build_libremesh.new-community.yml`
+
+
+### 2. Create a community recipe
+Create a configuration file inside the path defined by versions of LibreMesh and OpenWrt, and by the community name.
+
+```
+mkdir community/libremesh_master/openwrt_22.03.5/new-community/all_devices.yml
+```
+
+To use this recipe add it to the playbook as specified at [./roles_workflow.md](./roles_workflow.md) in the section `Build playbook setup`
+
+
+### 3. Create a lime-macaddress file
 
 Add the property `lime_mac` to a `openwrt_device` and define:
-the `lime-macaddress` and an `hostname` as they will we added to the hosts inventory file
+the `lime-macaddress` and an `hostname` as they will we added to the inventory file `inventory/libremesh_devices.yml`.
 
 Example:
 ```
@@ -79,9 +83,10 @@ libremesh_devices:
 
 ```
 
+Use this recipe to run the playbook `manage_lime_mac.yml` as specified at [./manage_lime_mac.md](./manage_lime_mac.md)
 
 
-### 3. Add specific configurations and packages in the various levels
+### 4. Add specific configurations and packages in the various levels
 If you need to customize some aspects of the recipe you can:
 1. include or remove `packages` and `configs` referencing:
   - the whole file/recipe
