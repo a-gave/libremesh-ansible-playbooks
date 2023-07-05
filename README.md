@@ -68,7 +68,7 @@ ansible-playbook build_libremesh.yml
 Overview
 ------------
 
-### Build LibreMesh firmware images
+### Build LibreMesh firmwares
 
 Create a file called recipe to define common configurations for different devices.
 The recipe file by default should be included in a path defined by the version of libremesh and by the version of openwrt that should be used, this eases and rends explicit the matching of configurations that should be applied, and is suitable e.g. for a small tech team that needs to build firmware images for different devices with configurations that may vary depending on LibreMesh or OpenWrt development.
@@ -84,14 +84,17 @@ Read more at [docs/recipes.md](docs/recipes.md) for the full list of configurati
 
 
 ### Generate configurations specific for single devices
-Initialize a device as an `host` in an ansible inventory file under the group `libremesh_devices` providing the **macaddress** for the ansible variable <inventory_hostname> and an **hostname** for the <inventory_hostname>.<hostname> variables (or define a template for the hostname generation). 
+Initialize a device as an `host` in an ansible inventory file under the group `libremesh_devices` providing 
+- the **macaddress** for the ansible variable `<inventory_hostname>` 
+- an **hostname** for the `<inventory_hostname>.<hostname>` variables (or define a template for the hostname generation). 
+
 The initialization generate a variables file specific to the `host` file in `host_vars/<inventory_hostname>.yml`.
 You can then edit this file adding customizations.
 This will be used:
 - to generate a `lime-macaddress` file to include in the libremesh firmware
 - during the generation of lists of `hosts` to be targeted by a monitoring system based on prometheus.
 
-Read more about the example playbook `manage_lime_mac.yml` at [docs/manage_lime_mac.md]
+Read more about the example playbook `manage_lime_mac.yml` at [docs/manage_lime_mac.md](docs/manage_lime_mac.md)
 
 
 ### Setup a monitoring system
@@ -102,7 +105,6 @@ Read more about the example playbook `manage_lime_mac.yml` at [docs/manage_lime_
     - grafana
 - Setup a monitoring system with a vpn (**requires at least one device with a public ip address**)
 - Add LibreMesh devices to a monitoring system
-
 
 
 Build LibreMesh firmware images
