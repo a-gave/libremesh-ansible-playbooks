@@ -33,7 +33,7 @@ cd libremesh-ansible-playbooks
 
 Dependencies
 ------------
-Install roles and collections on which this collection depends
+Install roles and collections on which these playbooks depends
 
     ansible-galaxy install -r requirements.yml
 
@@ -43,7 +43,10 @@ Quick start Build LibreMesh firmwares
 
 #### Manually install role's requirements
 By default as defined in `host_vars/localhost.yml` all requirements installations are declined for `localhost` that is the selected host for the example playbook.
-You can define a root password for the builder machine via `community.general.passwordstore lookup` or `ansible-vault` or install manually the role related requirements.
+
+You can store the root password of the builder machine using for example `community.general.passwordstore lookup` or `ansible-vault`.
+
+For simplicity you can leave as skipped these tasks and install manually the role's related requirements, they are listed in the libremesh-ansible-collection directory at `~/.ansible/collections/ansible_collections/libremesh/libremesh/roles/openwrt_imagebuilder_docker/tasks/0_requirements.yml`.
 
 For example to run the example playbook `build_libremesh` that use the openwrt imagebuilder docker based, install docker:
 ```
@@ -84,11 +87,12 @@ Read more at [docs/recipes.md](docs/recipes.md) for the full list of configurati
 
 
 ### Generate configurations specific for single devices
-Initialize a device as an `host` in an ansible inventory file under the group `libremesh_devices` providing 
+Initialize a device as an `host` in an ansible inventory file under the group `libremesh_devices` providing:
 - the **macaddress** for the ansible variable `<inventory_hostname>` 
-- an **hostname** for the `<inventory_hostname>.<hostname>` variables (or define a template for the hostname generation). 
+- an **hostname** for the `<inventory_hostname>.<hostname>` variable (or define a template for the hostname generation). 
 
 The initialization generate a variables file specific to the `host` file in `host_vars/<inventory_hostname>.yml`.
+
 You can then edit this file adding customizations.
 This will be used:
 - to generate a `lime-macaddress` file to include in the libremesh firmware
@@ -214,6 +218,8 @@ Select devices of which to build a libremesh firmware image, in the playbook fil
 ```
 
 This select a default recipe located at `community/libremesh_master/openwrt_22.03.5/libremesh/stable.yml` that include the default set of packages for libremesh using the network profiles https://github.com/libremesh/network-profiles.git
+
+You can define the list of devices directly in the playbook or in the recipe file. In the example above the `openwrt_targets` variable defined in the playbook overwrite the `libremesh_devices` one defined in the recipe, but keeping the selected packages listed in the recipe file. 
 
 Read also [docs/recipes.md](docs/recipes.md) for an explanation of the configurations files.
 
